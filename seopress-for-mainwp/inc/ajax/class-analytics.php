@@ -35,6 +35,14 @@ class Analytics {
 	 * @return void
 	 */
 	public function save_analytics_settings() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-save-analytics-settings-form', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -56,8 +64,8 @@ class Analytics {
 			);
 		}
 
-		$selected_sites = $this->sanitize_options( $_POST['selected_sites'] );
-		$settings       = $this->sanitize_options( $_POST['seopress_google_analytics_option_name'] ?? array() );
+		$selected_sites = $this->sanitize_options( wp_unslash( $_POST['selected_sites'] ) );
+		$settings       = $this->sanitize_options( wp_unslash( $_POST['seopress_google_analytics_option_name'] ) ?? array() );
 
 		$post_data = array(
 			'action'   => 'sync_settings',
@@ -91,7 +99,7 @@ class Analytics {
 
 		wp_send_json_success(
 			array(
-				'message' => __( 'Save successfull', 'wp-seopress-mainwp' ),
+				'message' => __( 'Save successful', 'wp-seopress-mainwp' ),
 			)
 		);
 	}
@@ -111,18 +119,18 @@ class Analytics {
 				} else {
 					if ( is_array( $value ) ) {
 						$option[ $field ] = $this->sanitize_options( $value );
-					} elseif ( ! empty($option['seopress_google_analytics_matomo_widget_auth_token']) && 'seopress_google_analytics_matomo_widget_auth_token' === $input[$value]) {
+					} elseif ( ! empty($option['seopress_google_analytics_matomo_widget_auth_token']) && 'seopress_google_analytics_matomo_widget_auth_token' === $field) {
 						$options = get_option('seopress_google_analytics_option_name');
 			
 						$token = isset($options['seopress_google_analytics_matomo_widget_auth_token']) ? $options['seopress_google_analytics_matomo_widget_auth_token'] : null;
 			
-						$option[ $field ] = $option[ $field ] ==='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' ? $token : sanitize_text_field( wp_unslash($value));
-					} elseif (( ! empty ($option['seopress_google_analytics_other_tracking']) && 'seopress_google_analytics_other_tracking' === $field) || (! empty ($option['seopress_google_analytics_other_tracking_body']) && 'seopress_google_analytics_other_tracking_body' === $field) || (! empty ($option['seopress_google_analytics_other_tracking_footer']) && 'seopress_google_analytics_other_tracking_footer' === $value) ) {
+						$option[ $field ] = $option[ $field ] === 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' ? $token : sanitize_text_field( wp_unslash($value));
+					} elseif (( ! empty ($option['seopress_google_analytics_other_tracking']) && 'seopress_google_analytics_other_tracking' === $field) || (! empty ($option['seopress_google_analytics_other_tracking_body']) && 'seopress_google_analytics_other_tracking_body' === $field) || (! empty ($option['seopress_google_analytics_other_tracking_footer']) && 'seopress_google_analytics_other_tracking_footer' === $field) ) {
 						if (current_user_can('unfiltered_html')) {
-							$option[ $field ] = $value; //No sanitization for this field
+							$option[ $field ] = wp_kses_post($value); // Sanitize HTML content
 						} else {
 							$options = get_option('seopress_google_analytics_option_name');
-							$option[ $field ] = isset($options[$field]) ? $options[$field] : sanitize_textarea_field($option[ $field ]);
+							$option[ $field ] = isset($options[$field]) ? $options[$field] : sanitize_textarea_field($value);
 						}
 					} elseif ( ! empty($option['seopress_google_analytics_opt_out_msg']) && 'seopress_google_analytics_opt_out_msg' === $field) {
 						$args = [

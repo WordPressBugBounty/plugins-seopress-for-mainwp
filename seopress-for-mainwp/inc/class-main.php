@@ -25,7 +25,6 @@ class Main {
 	 */
 	private function initialize() {
 		add_action( 'plugins_loaded', array( $this, 'load_objects' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_assets' ) );
 		add_action( 'mainwp_before_header', array( $this, 'seopress_error_notice' ) );
 
@@ -127,14 +126,21 @@ class Main {
 	 * Render the warning notice if the SEOPress plugin is not activated.
 	 */
 	public function seopress_error_notice() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		$screen = get_current_screen();
 
 		if ( $screen && strpos( $screen->base, 'mainwp_' ) !== false && ! in_array( 'wp-seopress/seopress.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
 			printf(
 				'<div class="ui red message">
-					<div class="header">' . esc_html__( 'The SEOPress plugin is not detected on the Dashboard site!', 'wp-seopress-mainwp' ) . '</div>
-					' . esc_html__( 'The MainWP SEOPress Extension requires the SEOPress plugin to be installed and activated on your MainWP Dashboard site.', 'wp-seopress-mainwp' ) . '
-				</div>'
+					<div class="header">%s</div>
+					%s
+				</div>',
+				esc_html__( 'The SEOPress plugin is not detected on the Dashboard site!', 'wp-seopress-mainwp' ),
+				esc_html__( 'The MainWP SEOPress Extension requires the SEOPress plugin to be installed and activated on your MainWP Dashboard site.', 'wp-seopress-mainwp' )
 			);
 		}
 	}
@@ -162,16 +168,7 @@ class Main {
 			\SEOPress\MainWP\AJAX\Licence::get_instance();
 		}
 	}
-
-	/**
-	 * Register textdomain
-	 *
-	 * @return  void
-	 */
-	public function load_textdomain() {
-		load_plugin_textdomain( 'wp-seopress-mainwp', false, SEOPRESS_WPMAIN_PLUGIN_DIR . 'languages' );
-	}
-
+	
 	/**
 	 * Remove mainwp dashboard plugin registered post types and add CPTs from child sites.
 	 *

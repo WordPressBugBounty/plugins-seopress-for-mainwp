@@ -35,6 +35,14 @@ class Export {
 	 * @return void
 	 */
 	public function export_settings() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-export-settings-form', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -56,7 +64,7 @@ class Export {
 			);
 		}
 
-		$selected_site = absint( sanitize_text_field( $_POST['selected_sites'][0] ) );
+		$selected_site = absint( sanitize_text_field( wp_unslash( $_POST['selected_sites'][0] ) ) );
 
 		$post_data = array(
 			'action' => 'export_settings',

@@ -35,6 +35,14 @@ class Import {
 	 * @return void
 	 */
 	public function import_settings() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-import-settings-form', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -63,8 +71,8 @@ class Import {
 			);
 		}
 
-		$selected_sites = $this->sanitize_options( $_POST['selected_sites'] );
-		$settings       = $this->sanitize_options( stripslashes( $_POST['mainwp_seopress_settings'] ) );
+		$selected_sites = $this->sanitize_options( wp_unslash( $_POST['selected_sites'] ) );
+		$settings       = $this->sanitize_options( stripslashes( wp_unslash( $_POST['mainwp_seopress_settings'] ) ) );
 
 		json_decode( $settings );
 
@@ -107,12 +115,12 @@ class Import {
 
 			global $wpdb;
 
-			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'seopress_mainwp_external_%'" );
+			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", 'seopress_mainwp_external_%' ) );
 		}
 
 		wp_send_json_success(
 			array(
-				'message' => __( 'Import successfull. Page will reload to load latest settings...', 'wp-seopress-mainwp' ),
+				'message' => __( 'Import successful. Page will reload to load latest settings...', 'wp-seopress-mainwp' ),
 			)
 		);
 	}

@@ -35,6 +35,14 @@ class Toggle_Features {
 	 * @return void
 	 */
 	public function toggle_feature() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-titles-meta-toggle', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -63,8 +71,8 @@ class Toggle_Features {
 			);
 		}
 
-		$selected_sites = $this->sanitize_options( $_POST['selected_sites'] );
-		$feature        = sanitize_text_field( $_POST['feature'] );
+		$selected_sites = $this->sanitize_options( wp_unslash( $_POST['selected_sites'] ) );
+		$feature        = sanitize_text_field( wp_unslash( $_POST['feature'] ) );
 
 		$seopress_toggle_options = get_option( 'seopress_toggle' );
 

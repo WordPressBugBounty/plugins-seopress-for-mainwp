@@ -5,8 +5,8 @@ Plugin URI: https://www.seopress.org/
 Description: The official SEOPress for MainWP extension.
 Author: The SEO Guys at SEOPress
 Author URI: https://www.seopress.org/wordpress-seo-plugins/seopress-mainwp-add-on/
-Version: 1.4
-License: GPLv2 or later
+Version: 1.5
+License: GPLv3 or later
 Text Domain: wp-seopress-mainwp
 Domain Path: /languages
 Documentation URI: https://www.seopress.org/docs/mainwp
@@ -14,10 +14,10 @@ Requires PHP: 7.4
 Requires at least: 6.0
 */
 
-/*  Copyright 2022 - 2024 - Benjamin Denis  (email : contact@seopress.org)
+/*  Copyright 2022 - 2025 - Benjamin Denis  (email : contact@seopress.org)
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
+    it under the terms of the GNU General Public License, version 3, as
     published by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful,
@@ -50,7 +50,7 @@ final class SEOPress_MainWP_Extension {
 	 *
 	 * @var string
 	 */
-	private $version = '1.4';
+	private $version = '1.5';
 
 	/**
 	 * Protected variable containg information about MainWP plugin status.
@@ -235,7 +235,13 @@ final class SEOPress_MainWP_Extension {
 		global $current_screen;
 
 		if ( 'plugins' === $current_screen->parent_base && false === $this->mainwp_main_activated ) {
-			_e('<div class="error"><p>SEOPress for MainWP requires MainWP Dashboard Plugin. Please install and activate <a href="https://mainwp.com/" target="_blank">MainWP Dashboard Plugin</a> first.</p></div>','wp-seopress-mainwp');
+			echo '<div class="error"><p>';
+			/* translators: %s: MainWP Dashboard Plugin URL */
+			printf(
+				wp_kses_post( __( 'SEOPress for MainWP requires MainWP Dashboard Plugin. Please install and activate <a href="%s" target="_blank">MainWP Dashboard Plugin</a> first.', 'wp-seopress-mainwp' ) ),
+				esc_url( 'https://wordpress.org/plugins/mainwp/' )
+			);
+			echo '</p></div>';
 		}
 	}
 

@@ -36,6 +36,14 @@ class XML_HTML_Sitemap {
 	 * @return void
 	 */
 	public function save_xml_html_sitemap_settings() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-save-xml-html-sitemap-settings-form', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -57,8 +65,8 @@ class XML_HTML_Sitemap {
 			);
 		}
 
-		$selected_sites = $this->sanitize_options( $_POST['selected_sites'] );
-		$settings       = $this->sanitize_options( $_POST['seopress_xml_sitemap_option_name'] ?? array() );
+		$selected_sites = $this->sanitize_options( wp_unslash( $_POST['selected_sites'] ) );
+		$settings       = $this->sanitize_options( wp_unslash( $_POST['seopress_xml_sitemap_option_name'] ) ?? array() );
 
 		$post_data = array(
 			'action'   => 'sync_settings',
@@ -87,12 +95,12 @@ class XML_HTML_Sitemap {
 		}
 
 		if ( function_exists( 'seopress_mainwp_save_settings' ) ) {
-			seopress_mainwp_save_settings( $seopress_toggle_options, 'seopress_xml_sitemap_option_name' );
+			seopress_mainwp_save_settings( $settings, 'seopress_xml_sitemap_option_name' );
 		}
 
 		wp_send_json_success(
 			array(
-				'message' => __( 'Save successfull', 'wp-seopress-mainwp' ),
+				'message' => __( 'Save successful', 'wp-seopress-mainwp' ),
 			)
 		);
 	}
@@ -105,6 +113,14 @@ class XML_HTML_Sitemap {
 	 * @return void
 	 */
 	public function flush_rewrite_rules() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-flush-rewrite-rules', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -126,7 +142,7 @@ class XML_HTML_Sitemap {
 			);
 		}
 
-		$selected_sites = $this->sanitize_options( $_POST['selected_sites'] );
+		$selected_sites = $this->sanitize_options( wp_unslash( $_POST['selected_sites'] ) );
 
 		$post_data = array(
 			'action' => 'flush_rewrite_rules',
@@ -154,7 +170,7 @@ class XML_HTML_Sitemap {
 
 		wp_send_json_success(
 			array(
-				'message' => __( 'Flush rules successfull', 'wp-seopress-mainwp' ),
+				'message' => __( 'Flush rules successful', 'wp-seopress-mainwp' ),
 			)
 		);
 	}

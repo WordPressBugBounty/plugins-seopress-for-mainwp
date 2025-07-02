@@ -1,0 +1,621 @@
+# Copyright (C) 2025 The SEO Guys at SEOPress
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: SEOPress for MainWP 1.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-seopress-mainwp\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-07-02T07:49:53+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: wp-seopress-mainwp\n"
+
+#. Plugin Name of the plugin
+#: wp-seopress-mainwp.php
+msgid "SEOPress for MainWP"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: wp-seopress-mainwp.php
+msgid "https://www.seopress.org/"
+msgstr ""
+
+#. Description of the plugin
+#: wp-seopress-mainwp.php
+msgid "The official SEOPress for MainWP extension."
+msgstr ""
+
+#. Author of the plugin
+#: wp-seopress-mainwp.php
+msgid "The SEO Guys at SEOPress"
+msgstr ""
+
+#. Author URI of the plugin
+#: wp-seopress-mainwp.php
+msgid "https://www.seopress.org/wordpress-seo-plugins/seopress-mainwp-add-on/"
+msgstr ""
+
+#: inc/ajax/class-advanced.php:46
+#: inc/ajax/class-analytics.php:42
+#: inc/ajax/class-export.php:42
+#: inc/ajax/class-import.php:42
+#: inc/ajax/class-instant-indexing.php:42
+#: inc/ajax/class-licence.php:43
+#: inc/ajax/class-licence.php:109
+#: inc/ajax/class-load-site-settings.php:42
+#: inc/ajax/class-pro-page.php:42
+#: inc/ajax/class-social-networks.php:42
+#: inc/ajax/class-titles-metas.php:42
+#: inc/ajax/class-toggle-features.php:42
+#: inc/ajax/class-xml-html-sitemap.php:43
+#: inc/ajax/class-xml-html-sitemap.php:112
+msgid "Invalid nonce"
+msgstr ""
+
+#: inc/ajax/class-advanced.php:51
+#: inc/ajax/class-analytics.php:47
+#: inc/ajax/class-export.php:47
+#: inc/ajax/class-import.php:47
+#: inc/ajax/class-instant-indexing.php:47
+#: inc/ajax/class-licence.php:48
+#: inc/ajax/class-licence.php:114
+#: inc/ajax/class-load-site-settings.php:47
+#: inc/ajax/class-pro-page.php:47
+#: inc/ajax/class-social-networks.php:47
+#: inc/ajax/class-titles-metas.php:47
+#: inc/ajax/class-toggle-features.php:47
+#: inc/ajax/class-xml-html-sitemap.php:48
+#: inc/ajax/class-xml-html-sitemap.php:117
+msgid "Invalid form. Please refresh the page and try again."
+msgstr ""
+
+#: inc/ajax/class-advanced.php:58
+#: inc/ajax/class-analytics.php:54
+#: inc/ajax/class-instant-indexing.php:54
+#: inc/ajax/class-licence.php:55
+#: inc/ajax/class-licence.php:121
+#: inc/ajax/class-pro-page.php:54
+#: inc/ajax/class-social-networks.php:54
+#: inc/ajax/class-titles-metas.php:54
+#: inc/ajax/class-toggle-features.php:54
+#: inc/ajax/class-xml-html-sitemap.php:55
+#: inc/ajax/class-xml-html-sitemap.php:124
+msgid "Please select a site on which to save the settings"
+msgstr ""
+
+#. translators: %d - Site id.
+#: inc/ajax/class-advanced.php:82
+#: inc/ajax/class-analytics.php:77
+#: inc/ajax/class-import.php:92
+#: inc/ajax/class-instant-indexing.php:77
+#: inc/ajax/class-licence.php:77
+#: inc/ajax/class-licence.php:141
+#: inc/ajax/class-pro-page.php:77
+#: inc/ajax/class-social-networks.php:77
+#: inc/ajax/class-titles-metas.php:84
+#: inc/ajax/class-toggle-features.php:92
+#: inc/ajax/class-xml-html-sitemap.php:78
+#: inc/ajax/class-xml-html-sitemap.php:144
+msgid "Site ID %d: "
+msgstr ""
+
+#: inc/ajax/class-advanced.php:99
+#: inc/ajax/class-analytics.php:94
+#: inc/ajax/class-instant-indexing.php:94
+#: inc/ajax/class-licence.php:92
+#: inc/ajax/class-pro-page.php:94
+#: inc/ajax/class-social-networks.php:94
+#: inc/ajax/class-titles-metas.php:101
+#: inc/ajax/class-xml-html-sitemap.php:95
+msgid "Save successfull"
+msgstr ""
+
+#: inc/ajax/class-export.php:54
+#: inc/ajax/class-load-site-settings.php:54
+msgid "Please select a site from which to export the settings"
+msgstr ""
+
+#: inc/ajax/class-import.php:54
+msgid "Please select a site on which to import the settings"
+msgstr ""
+
+#: inc/ajax/class-import.php:61
+msgid "Please add settings"
+msgstr ""
+
+#: inc/ajax/class-import.php:73
+msgid "Invalid json. Plase check the settings you added for any json validation error."
+msgstr ""
+
+#: inc/ajax/class-import.php:115
+msgid "Import successfull. Page will reload to load latest settings..."
+msgstr ""
+
+#: inc/ajax/class-licence.php:157
+msgid "Reset successfull"
+msgstr ""
+
+#: inc/ajax/class-load-site-settings.php:61
+msgid "Failed to load site settings. Function `seopress_do_import_settings` is missing."
+msgstr ""
+
+#: inc/ajax/class-load-site-settings.php:105
+msgid "Settings loaded successfully. Page will reload to show new settings..."
+msgstr ""
+
+#: inc/ajax/class-titles-metas.php:64
+msgid "No settings found."
+msgstr ""
+
+#: inc/ajax/class-toggle-features.php:61
+msgid "Feature missing. Please refresh the page."
+msgstr ""
+
+#: inc/ajax/class-toggle-features.php:108
+msgid "Settings saved successfully"
+msgstr ""
+
+#: inc/ajax/class-xml-html-sitemap.php:157
+msgid "Flush rules successfull"
+msgstr ""
+
+#: inc/class-main.php:106
+msgid "Please select only one site to load settings from"
+msgstr ""
+
+#: inc/class-main.php:109
+msgid "Flushing..."
+msgstr ""
+
+#: inc/class-main.php:113
+msgid "Resetting..."
+msgstr ""
+
+#: inc/class-main.php:134
+msgid "The SEOPress plugin is not detected on the Dashboard site!"
+msgstr ""
+
+#: inc/class-main.php:135
+msgid "The MainWP SEOPress Extension requires the SEOPress plugin to be installed and activated on your MainWP Dashboard site."
+msgstr ""
+
+#: views/main-tabs.php:15
+#: views/seopress-dashboard.php:36
+msgid "Dashboard"
+msgstr ""
+
+#: views/main-tabs.php:16
+#: views/seopress-dashboard.php:46
+#: views/seopress-titles.php:23
+msgid "Titles & Metas"
+msgstr ""
+
+#: views/main-tabs.php:17
+#: views/seopress-xml-sitemap.php:23
+msgid "XML - HTML Sitemap"
+msgstr ""
+
+#: views/main-tabs.php:18
+#: views/seopress-dashboard.php:64
+#: views/seopress-social.php:23
+msgid "Social Networks"
+msgstr ""
+
+#: views/main-tabs.php:19
+#: views/seopress-dashboard.php:73
+#: views/seopress-google-analytics.php:23
+msgid "Analytics"
+msgstr ""
+
+#: views/main-tabs.php:20
+#: views/seopress-dashboard.php:82
+#: views/seopress-instant-indexing.php:23
+msgid "Instant Indexing"
+msgstr ""
+
+#: views/main-tabs.php:21
+#: views/seopress-advanced.php:23
+#: views/seopress-advanced.php:41
+#: views/seopress-dashboard.php:91
+#: views/seopress-titles.php:50
+msgid "Advanced"
+msgstr ""
+
+#: views/main-tabs.php:22
+#: views/seopress-dashboard.php:225
+#: views/seopress-import-export.php:20
+msgid "Tools"
+msgstr ""
+
+#: views/main-tabs.php:24
+#: views/seopress-pro-page.php:29
+msgid "PRO"
+msgstr ""
+
+#: views/main-tabs.php:25
+#: views/seopress-license.php:18
+msgid "License"
+msgstr ""
+
+#: views/main-tabs.php:37
+msgid "Current settings are loaded from"
+msgstr ""
+
+#: views/main-tabs.php:39
+msgid "If there are changes made directly on that site, you need to re-load the new settings using the \"Load Settings\" button."
+msgstr ""
+
+#: views/seopress-advanced.php:11
+#: views/seopress-google-analytics.php:11
+#: views/seopress-instant-indexing.php:11
+#: views/seopress-social.php:11
+#: views/seopress-titles.php:11
+#: views/seopress-xml-sitemap.php:11
+msgid "Click to enable this feature"
+msgstr ""
+
+#: views/seopress-advanced.php:12
+#: views/seopress-google-analytics.php:12
+#: views/seopress-instant-indexing.php:12
+#: views/seopress-social.php:12
+#: views/seopress-titles.php:12
+#: views/seopress-xml-sitemap.php:12
+msgid "Click to disable this feature"
+msgstr ""
+
+#: views/seopress-advanced.php:38
+msgid "Image SEO"
+msgstr ""
+
+#: views/seopress-advanced.php:44
+msgid "Appearance"
+msgstr ""
+
+#: views/seopress-advanced.php:47
+msgid "Security"
+msgstr ""
+
+#: views/seopress-dashboard.php:41
+msgid "SEO management"
+msgstr ""
+
+#: views/seopress-dashboard.php:48
+msgid "Manage all your titles & metas for post types, taxonomies, archives..."
+msgstr ""
+
+#: views/seopress-dashboard.php:55
+msgid "XML & HTML Sitemaps"
+msgstr ""
+
+#: views/seopress-dashboard.php:57
+msgid "Manage your XML - Image - Video - HTML Sitemap."
+msgstr ""
+
+#: views/seopress-dashboard.php:66
+msgid "Open Graph, X Cards, Google Knowledge Graph and more..."
+msgstr ""
+
+#: views/seopress-dashboard.php:75
+msgid "Track everything about your visitors with Google Analytics / Matomo / Microsoft Clarity."
+msgstr ""
+
+#: views/seopress-dashboard.php:84
+msgid "Ping Google & Bing to quickly index your content."
+msgstr ""
+
+#: views/seopress-dashboard.php:93
+msgid "Optimize your images for SEO. Configure advanced settings."
+msgstr ""
+
+#: views/seopress-dashboard.php:101
+#: views/seopress-pro-page.php:54
+msgid "WooCommerce"
+msgstr ""
+
+#: views/seopress-dashboard.php:103
+msgid "Improve WooCommerce SEO"
+msgstr ""
+
+#: views/seopress-dashboard.php:110
+#: views/seopress-pro-page.php:57
+msgid "Easy Digital Downloads"
+msgstr ""
+
+#: views/seopress-dashboard.php:112
+msgid "Imporove Easy Digital Downloads SEO"
+msgstr ""
+
+#: views/seopress-dashboard.php:119
+#: views/seopress-pro-page.php:48
+msgid "AI"
+msgstr ""
+
+#: views/seopress-dashboard.php:121
+msgid "Use the power of artificial intelligence to increase your productivity."
+msgstr ""
+
+#: views/seopress-dashboard.php:128
+#: views/seopress-pro-page.php:60
+msgid "Google Search Console"
+msgstr ""
+
+#: views/seopress-dashboard.php:130
+msgid "Get clicks, positions, CTR and impressions. Inspect your URL for details about crawling, indexing, mobile compatibility, schemas and more."
+msgstr ""
+
+#: views/seopress-dashboard.php:137
+#: views/seopress-pro-page.php:45
+msgid "Local Business"
+msgstr ""
+
+#: views/seopress-dashboard.php:139
+msgid "Add Google Local Business data type."
+msgstr ""
+
+#: views/seopress-dashboard.php:146
+#: views/seopress-pro-page.php:66
+msgid "Dublin Core"
+msgstr ""
+
+#: views/seopress-dashboard.php:148
+msgid "Add Dublin Core meta tags."
+msgstr ""
+
+#: views/seopress-dashboard.php:155
+msgid "Schemas"
+msgstr ""
+
+#: views/seopress-dashboard.php:157
+msgid "Add data types to your content: articles, courses, recipes, videos, events, products and more."
+msgstr ""
+
+#: views/seopress-dashboard.php:164
+#: views/seopress-pro-page.php:51
+msgid "Breadcrumbs"
+msgstr ""
+
+#: views/seopress-dashboard.php:166
+msgid "Enable Breadcrumbs for your theme and improve your SEO in SERPs."
+msgstr ""
+
+#: views/seopress-dashboard.php:172
+msgid "Google Page Speed"
+msgstr ""
+
+#: views/seopress-dashboard.php:174
+msgid "Track your website performance to improve SEO with Google Page Speed."
+msgstr ""
+
+#: views/seopress-dashboard.php:181
+#: views/seopress-pro-page.php:42
+msgid "robots.txt"
+msgstr ""
+
+#: views/seopress-dashboard.php:183
+msgid "Edit your robots.txt file"
+msgstr ""
+
+#: views/seopress-dashboard.php:190
+msgid "Google News Sitemap"
+msgstr ""
+
+#: views/seopress-dashboard.php:192
+msgid "Optimize your site for Google News."
+msgstr ""
+
+#: views/seopress-dashboard.php:199
+msgid "Redirections"
+msgstr ""
+
+#: views/seopress-dashboard.php:201
+msgid "Monitor 404, create 301, 302 and 307 redirections."
+msgstr ""
+
+#: views/seopress-dashboard.php:208
+#: views/seopress-pro-page.php:69
+msgid "URL Rewriting"
+msgstr ""
+
+#: views/seopress-dashboard.php:210
+msgid "Customize your permalinks."
+msgstr ""
+
+#: views/seopress-dashboard.php:216
+#: views/seopress-pro-page.php:72
+msgid "RSS"
+msgstr ""
+
+#: views/seopress-dashboard.php:218
+msgid "Configure default WordPress RSS."
+msgstr ""
+
+#: views/seopress-dashboard.php:227
+msgid "Import/Export plugin settings from site to site."
+msgstr ""
+
+#: views/seopress-dashboard.php:234
+msgid "Licence"
+msgstr ""
+
+#: views/seopress-dashboard.php:236
+msgid "Edit your licence key."
+msgstr ""
+
+#: views/seopress-google-analytics.php:38
+msgid "Google Analytics"
+msgstr ""
+
+#: views/seopress-google-analytics.php:41
+msgid "Custom Tracking"
+msgstr ""
+
+#: views/seopress-google-analytics.php:45
+msgid "Ecommerce"
+msgstr ""
+
+#: views/seopress-google-analytics.php:49
+msgid "Events"
+msgstr ""
+
+#: views/seopress-google-analytics.php:52
+msgid "Custom Dimensions"
+msgstr ""
+
+#: views/seopress-google-analytics.php:56
+msgid "Stats in Dashboard"
+msgstr ""
+
+#: views/seopress-google-analytics.php:60
+msgid "Cookie Bar / GDPR"
+msgstr ""
+
+#: views/seopress-google-analytics.php:63
+msgid "Matomo"
+msgstr ""
+
+#: views/seopress-google-analytics.php:66
+msgid "Clarity"
+msgstr ""
+
+#: views/seopress-import-export.php:25
+msgid "Export / Import Settings"
+msgstr ""
+
+#: views/seopress-import-export.php:29
+msgid "Export"
+msgstr ""
+
+#: views/seopress-import-export.php:30
+msgid "Import"
+msgstr ""
+
+#: views/seopress-import-export.php:40
+#: views/seopress-import-export.php:60
+#: views/seopress-license.php:41
+#: views/tabs-content.php:19
+msgid "Select Sites"
+msgstr ""
+
+#: views/seopress-import-export.php:46
+msgid "Export Settings"
+msgstr ""
+
+#: views/seopress-import-export.php:66
+msgid "Import Settings"
+msgstr ""
+
+#: views/seopress-instant-indexing.php:38
+#: views/seopress-xml-sitemap.php:38
+msgid "General"
+msgstr ""
+
+#: views/seopress-instant-indexing.php:41
+msgid "Settings"
+msgstr ""
+
+#: views/seopress-license.php:24
+msgid "The license key is used to access automatic updates and support."
+msgstr ""
+
+#: views/seopress-license.php:27
+msgid "View my account"
+msgstr ""
+
+#: views/seopress-license.php:30
+msgid "Reset your license"
+msgstr ""
+
+#: views/seopress-license.php:35
+msgid "Steps to follow to activate your license:"
+msgstr ""
+
+#: views/seopress-license.php:39
+msgid "Paste your license key"
+msgstr ""
+
+#: views/seopress-license.php:43
+#: views/tabs-content.php:21
+msgid "Apply Changes"
+msgstr ""
+
+#: views/seopress-license.php:48
+msgid "That's it!"
+msgstr ""
+
+#: views/seopress-license.php:55
+msgid "Download unauthorized? - Can‘t activate?"
+msgstr ""
+
+#: views/seopress-license.php:63
+msgid "Licence Key"
+msgstr ""
+
+#: views/seopress-license.php:64
+msgid "Enter your licence key"
+msgstr ""
+
+#: views/seopress-pro-page.php:36
+msgid "Redirections / 404"
+msgstr ""
+
+#: views/seopress-pro-page.php:39
+msgid "Structured Data Types"
+msgstr ""
+
+#: views/seopress-pro-page.php:63
+msgid "Google News"
+msgstr ""
+
+#: views/seopress-pro-page.php:75
+msgid "White Label"
+msgstr ""
+
+#: views/seopress-social.php:38
+msgid "Knowledge Graph"
+msgstr ""
+
+#: views/seopress-social.php:41
+msgid "Your Social Accounts"
+msgstr ""
+
+#: views/seopress-social.php:44
+msgid "Facebook (Open Graph)"
+msgstr ""
+
+#: views/seopress-social.php:47
+msgid "X Cards"
+msgstr ""
+
+#: views/seopress-titles.php:38
+msgid "Home"
+msgstr ""
+
+#: views/seopress-titles.php:41
+#: views/seopress-xml-sitemap.php:41
+msgid "Post Types"
+msgstr ""
+
+#: views/seopress-titles.php:44
+msgid "Archives"
+msgstr ""
+
+#: views/seopress-titles.php:47
+#: views/seopress-xml-sitemap.php:44
+msgid "Taxonomies"
+msgstr ""
+
+#: views/seopress-xml-sitemap.php:47
+msgid "HTML Sitemap"
+msgstr ""
+
+#: views/tabs-content.php:22
+msgid "Load Settings"
+msgstr ""
+
+#: wp-seopress-mainwp.php:239
+msgid "SEOPress for MainWP requires MainWP Dashboard Plugin. Please install and activate <a href=\"%s\" target=\"_blank\">MainWP Dashboard Plugin</a> first."
+msgstr ""

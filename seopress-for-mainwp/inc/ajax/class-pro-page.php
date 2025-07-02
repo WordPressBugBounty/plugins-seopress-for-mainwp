@@ -35,6 +35,14 @@ class Pro_Page {
 	 * @return void
 	 */
 	public function save_pro_settings() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-save-pro-settings-form', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -56,8 +64,8 @@ class Pro_Page {
 			);
 		}
 
-		$selected_sites = $this->sanitize_options( $_POST['selected_sites'] );
-		$settings       = $this->sanitize_options( $_POST['seopress_pro_option_name'] ?? array() );
+		$selected_sites = $this->sanitize_options( wp_unslash( $_POST['selected_sites'] ) );
+		$settings       = $this->sanitize_options( wp_unslash( $_POST['seopress_pro_option_name'] ) ?? array() );
 
 		$post_data = array(
 			'action'   => 'sync_settings',
@@ -91,7 +99,7 @@ class Pro_Page {
 
 		wp_send_json_success(
 			array(
-				'message' => __( 'Save successfull', 'wp-seopress-mainwp' ),
+				'message' => __( 'Save successful', 'wp-seopress-mainwp' ),
 			)
 		);
 	}
@@ -130,7 +138,7 @@ class Pro_Page {
 								'br' => [],
 								'a' => ['href' => [], 'rel' => []],
 							];
-							$input[$value] = wp_kses($input[$value], $args);
+							$option[ $field ] = wp_kses($value, $args);
 						} else {
 							$option[ $field ] = sanitize_text_field( wp_unslash( $value ) );
 						}

@@ -39,6 +39,14 @@ class Advanced {
 	 * @return void
 	 */
 	public function save_advanced_settings() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-save-advanced-settings-form', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -61,8 +69,8 @@ class Advanced {
 		}
 
 		// Selected site is sanitized down there where it is used.
-		$selected_sites = $this->sanitize_options( $_POST['selected_sites'] );
-		$settings       = $this->sanitize_options( $_POST['seopress_advanced_option_name'] ?? array() );
+		$selected_sites = $this->sanitize_options( wp_unslash( $_POST['selected_sites'] ) );
+		$settings       = $this->sanitize_options( wp_unslash( $_POST['seopress_advanced_option_name'] ) ?? array() );
 
 		$post_data = array(
 			'action'   => 'sync_settings',
@@ -96,7 +104,7 @@ class Advanced {
 
 		wp_send_json_success(
 			array(
-				'message' => __( 'Save successfull', 'wp-seopress-mainwp' ),
+				'message' => __( 'Save successful', 'wp-seopress-mainwp' ),
 			)
 		);
 	}

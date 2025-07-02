@@ -36,6 +36,14 @@ class Licence {
 	 * @return void
 	 */
 	public function save_pro_licence() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-save-pro-licence-form', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -57,12 +65,12 @@ class Licence {
 			);
 		}
 
-		$selected_sites = $this->sanitize_options( $_POST['selected_sites'] );
-		$licence        = sanitize_text_field( $_POST['seopress_pro_license_key'] ?? '' );
+		$selected_sites = $this->sanitize_options( wp_unslash( $_POST['selected_sites'] ) );
+		$license        = sanitize_text_field( wp_unslash( $_POST['seopress_pro_license_key'] ) ) ?? '';
 
 		$post_data = array(
 			'action'  => 'save_pro_licence',
-			'licence' => $licence,
+			'licence' => $license,
 		);
 
 		global $seopress_main_wp_extension;
@@ -89,7 +97,7 @@ class Licence {
 
 		wp_send_json_success(
 			array(
-				'message' => __( 'Save successfull', 'wp-seopress-mainwp' ),
+				'message' => __( 'Save successful', 'wp-seopress-mainwp' ),
 			)
 		);
 	}
@@ -102,6 +110,14 @@ class Licence {
 	 * @return void
 	 */
 	public function reset_pro_licence() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-reset-pro-licence-form', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -123,7 +139,7 @@ class Licence {
 			);
 		}
 
-		$selected_sites = $this->sanitize_options( $_POST['selected_sites'] );
+		$selected_sites = $this->sanitize_options( wp_unslash( $_POST['selected_sites'] ) );
 
 		$post_data = array(
 			'action' => 'reset_pro_licence',
@@ -150,11 +166,11 @@ class Licence {
 		}
 
 		delete_option( 'seopress_pro_license_status' );
-	  	delete_option( 'seopress_pro_license_key' );
+		delete_option( 'seopress_pro_license_key' );
 
 		wp_send_json_success(
 			array(
-				'message' => __( 'Reset successfull', 'wp-seopress-mainwp' ),
+				'message' => __( 'Reset successful', 'wp-seopress-mainwp' ),
 			)
 		);
 	}

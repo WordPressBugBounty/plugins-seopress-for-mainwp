@@ -31,7 +31,24 @@ class Tabs {
 	 * @return void
 	 */
 	private function initialize() {
-		$this->current_tab = ! empty( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'seopress-dashboard'; //phpcs:ignore
+		// Define allowed tabs for security
+		$allowed_tabs = array(
+			'seopress-dashboard',
+			'seopress-titles',
+			'seopress-xml-sitemap',
+			'seopress-social',
+			'seopress-google-analytics',
+			'seopress-instant-indexing',
+			'seopress-advanced',
+			'seopress-import-export',
+			'seopress-pro-page',
+			'seopress-license',
+		);
+
+		$requested_tab = ! empty( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'seopress-dashboard'; //phpcs:ignore
+		
+		// Validate tab against allowed list
+		$this->current_tab = in_array( $requested_tab, $allowed_tabs, true ) ? $requested_tab : 'seopress-dashboard';
 	}
 
 	/**
@@ -49,6 +66,11 @@ class Tabs {
 	 * @return  void
 	 */
 	public function render() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Insufficient permissions', 'wp-seopress-mainwp' ) );
+		}
+
 		$selected_websites = array();
 		$selected_groups   = array();
 

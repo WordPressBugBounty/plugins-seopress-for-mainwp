@@ -35,6 +35,14 @@ class Load_Site_Settings {
 	 * @return void
 	 */
 	public function load_settings() {
+		// Check user capabilities
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				__( 'Insufficient permissions', 'wp-seopress-mainwp' ),
+				403
+			);
+		}
+
 		$nonce_check = check_ajax_referer( 'mainwp-seopress-load-site-settings-nonce', '__nonce', false );
 
 		if ( ! $nonce_check ) {
@@ -63,7 +71,7 @@ class Load_Site_Settings {
 			);
 		}
 
-		$selected_site = absint( sanitize_text_field( $_POST['selected_site'] ) );
+		$selected_site = absint( sanitize_text_field( wp_unslash( $_POST['selected_site'] ) ) );
 
 		$post_data = array(
 			'action' => 'export_settings',
@@ -89,7 +97,7 @@ class Load_Site_Settings {
 
 			global $wpdb;
 
-			$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'seopress_mainwp_external_%'");
+			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", 'seopress_mainwp_external_%' ) );
 		}
 
 		$child_websites = apply_filters( 'mainwp_getsites', $seopress_main_wp_extension->get_child_file(), $seopress_main_wp_extension->get_child_key() );

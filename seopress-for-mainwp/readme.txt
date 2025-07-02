@@ -2,13 +2,13 @@
 Authors: rainbowgeek
 Contributors: seopress, rainbowgeek
 Donate link: https://www.seopress.org/
-Tags: SEO, WordPress management, WordPress Manager, WordPress controller, multiple WordPress Sites, multisite, MainWP
+Tags: SEO, WordPress management, WordPress Manager, multiple WordPress Sites, MainWP
 Requires at least: 6.0
-Tested up to: 6.5
-Requires PHP: 7.2
-Stable tag: 1.4
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tested up to: 6.8
+Requires PHP: 7.4
+Stable tag: 1.5
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 SEOPress for MainWP extension, is an-addon for MainWP and SEOPress plugins. Edit your SEOPress global settings directly from MainWP dashboard site.
 
@@ -80,14 +80,10 @@ For PRO users: support by mail from their customer account.
 
 == Changelog ==
 
-= 1.4 =
-* NEW WordPress 6.5 compatibility
-* INFO Remove JS suffix on handler
-* INFO Remove useless GA section
-* INFO Cleaning inline styles
-* INFO Improve sanitization
-* FIX Analytics icon
-* FIX Missing some Matomo settings
-* FIX i18n
+= 1.5 =
+* INFO Bump PHP version to 7.4
+* INFO Add POT file for i18n
+* INFO Improve some notices
+* FIX Strengthened security
 
 <a href="https://www.seopress.org/support/changelogs/seopress-for-mainwp-add-on/" target="_blank">View complete changelog</a>
